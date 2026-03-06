@@ -774,11 +774,13 @@ function isCollectionOpen() {
 function showInstructions() {
   const el = document.getElementById('instructions-overlay');
   el.classList.add('show');
+  el.classList.remove('hiding');
 }
 
 function dismissInstructions() {
   const el = document.getElementById('instructions-overlay');
   el.classList.remove('show');
+  el.classList.add('hiding');
   localStorage.setItem('purrfect2048_instructionsSeen', 'true');
 }
 
