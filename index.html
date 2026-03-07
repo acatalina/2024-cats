@@ -39,25 +39,153 @@
       radial-gradient(ellipse at 50% 50%, #fff0fa 0%, transparent 70%);
   }
   h1 { font-size:2rem; font-weight:900; color:#a0527a; letter-spacing:-1px; line-height:1; text-shadow:2px 3px 0 rgba(200,120,180,.18); }
-  .sub { color:#c48aaa; font-size:.78rem; font-weight:700; margin-top:3px; }
+  .sub { color:#c48aaa; font-size:.78rem; font-weight:700; margin-top:10px; text-align:center; }
+  .header-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+    padding-top: 40px;
+  }
+  .header-paw {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    opacity: 0.75;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .paw-tl { top: 30px; left: -8px; transform: rotate(-30deg); }
+  .paw-tr { top: 30px; right: -8px; transform: rotate(30deg); }
+  .paw-bl { bottom: 52px; left: -8px; transform: rotate(-60deg); }
+  .paw-br { bottom: 52px; right: -8px; transform: rotate(60deg); }
+  .header-mascot {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 72px;
+    z-index: 3;
+    filter: drop-shadow(0 4px 8px rgba(160, 80, 140, 0.3));
+  }
   .header {
-    display:grid; grid-template-columns:1fr 1fr;
-    width:100%; max-width:390px;
-    margin-bottom:12px; gap:10px;
+    background: linear-gradient(145deg, #fae6f5 0%, #f0e1ff 30%, #fae6f5 50%, #f0e1ff 70%, #fae6f5 100%);
+    padding: 16px 20px;
+    border-radius: 20px;
+    box-shadow:
+      0 12px 40px rgba(250, 150, 220, 0.35),
+      0 4px 12px rgba(160, 80, 140, 0.25),
+      inset 0 -3px 6px rgba(160, 80, 140, 0.15),
+      inset 0 3px 6px rgba(255, 255, 255, 0.9);
+    position: relative;
+    border: 2.5px solid rgba(255, 255, 255, 0.7);
+    overflow: hidden;
   }
-  .header-title { display:flex; flex-direction:column; justify-content:center; }
-  .header-right { display:flex; flex-direction:column; gap:7px; }
-  .scores-row { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
-  .btns-row { display:flex; gap:6px; justify-content:flex-end; }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0.3) 40%,
+      rgba(255, 255, 255, 0) 100%);
+    border-radius: 20px 20px 0 0;
+    pointer-events: none;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 10%;
+    right: 10%;
+    height: 8px;
+    background: radial-gradient(ellipse at center, rgba(160, 80, 140, 0.3) 0%, transparent 70%);
+    filter: blur(4px);
+  }
+
+  .header-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-title h1 {
+    font-size: 48px;
+    font-weight: 900;
+    margin: 0;
+    color: #b44ddb;
+    -webkit-text-stroke: 1px rgba(160, 50, 180, 0.3);
+    text-shadow:
+      0 2px 0 #c77de0,
+      0 4px 0 #a040c0,
+      0 6px 12px rgba(160, 50, 180, 0.35),
+      0 0 20px rgba(200, 120, 255, 0.2);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .scores-row {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
   .score-box {
-    background:linear-gradient(135deg,#f5d0ea,#e8d5f8);
-    color:#a0527a; border-radius:12px; padding:5px 8px;
-    text-align:center;
-    box-shadow:0 2px 0 #d4a0c8, inset 0 1px 2px rgba(255,255,255,.7);
+    background: linear-gradient(180deg, #f5eaff 0%, #fdf5fb 40%, #f0e1ff 100%);
+    color: #a0527a;
+    border-radius: 14px;
+    padding: 8px 18px 10px;
+    text-align: center;
+    box-shadow:
+      0 4px 12px rgba(160, 80, 140, 0.15),
+      inset 0 -2px 4px rgba(160, 80, 140, 0.1),
+      inset 0 2px 3px rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: visible;
+    min-width: 80px;
   }
-  .score-box .lbl { font-size:.55rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; opacity:.65; }
-  .score-box .val { font-size:1.1rem; font-weight:900; line-height:1.2; }
-  .btns-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; }
+
+  .score-box::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 8px;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #f0e1ff, #e8d4f8);
+    border-radius: 3px 8px 0 0;
+    transform: rotate(-20deg);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-bottom: none;
+    border-right: none;
+    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.8);
+  }
+  .score-box::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #e8d4f8, #f0e1ff);
+    border-radius: 8px 3px 0 0;
+    transform: rotate(20deg);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-bottom: none;
+    border-left: none;
+    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+  }
+  .score-box .lbl { font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; opacity:.65; }
+  .score-box .val { font-size:1.3rem; font-weight:900; line-height:1.3; }
+  .btns-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px; }
   .btn {
     background:linear-gradient(135deg,#f9a8d4,#e879a0); color:#fff; border:none; border-radius:12px; padding:10px 8px;
     font-family:'Nunito',sans-serif; font-weight:900; font-size:.88rem; cursor:pointer;
@@ -301,21 +429,28 @@
 <body>
 <canvas id="paw-bg"></canvas>
 <div class="game-wrap">
-<div class="header">
-  <div class="header-title">
-    <h1>🐾 Purrfect</h1>
-    <p class="sub">Merge tiles to find all the cats!</p>
+<div class="header-wrapper">
+  <img class="header-mascot" src="assets/cute-cat.png" alt="Cat mascot">
+  <img src="assets/paw.png" class="header-paw paw-tl">
+  <img src="assets/paw.png" class="header-paw paw-tr">
+  <img src="assets/paw.png" class="header-paw paw-bl">
+  <img src="assets/paw.png" class="header-paw paw-br">
+  <div class="header">
+    <div class="header-content">
+      <div class="header-title">
+        <h1>Purrfect</h1>
+      </div>
+      <div class="scores-row">
+        <div class="score-box"><div class="lbl">Score:</div><div class="val" id="score">0</div></div>
+        <div class="score-box"><div class="lbl">Best:</div><div class="val" id="best">0</div></div>
+      </div>
+    </div>
   </div>
-  <div class="header-right">
-    <div class="scores-row">
-      <div class="score-box"><div class="lbl">Score</div><div class="val" id="score">0</div></div>
-      <div class="score-box"><div class="lbl">Best</div><div class="val" id="best">0</div></div>
-    </div>
-    <div class="btns-row">
-      <button class="btn" onclick="newGame()">New Game</button>
-      <button class="btn" id="sound-btn" onclick="toggleSound()" title="Toggle sound">🔊 Sound</button>
-      <button class="btn" onclick="openCatCollection()" style="background:linear-gradient(135deg,#fbcfe8,#f9a8d4);box-shadow:0 3px 0 #d060a0;" title="Cat Collection">🐱 Cats</button>
-    </div>
+  <p class="sub">Merge tiles to find all the cats!</p>
+  <div class="btns-row">
+    <button class="btn" onclick="newGame()">New Game</button>
+    <button class="btn" id="sound-btn" onclick="toggleSound()" title="Toggle sound">🔊 Sound</button>
+    <button class="btn" onclick="openCatCollection()" style="background:linear-gradient(135deg,#fbcfe8,#f9a8d4);box-shadow:0 3px 0 #d060a0;" title="Cat Collection">🐱 Cats</button>
   </div>
 </div>
 <div class="board-wrap">
@@ -668,7 +803,6 @@ function openTutorial() {
 }
 
 function closeTutorial() {
-  localStorage.setItem('purrfect2048_seen_tutorial', 'true');
   const el = document.getElementById('tutorial');
   el.classList.add('hiding');
   setTimeout(() => { el.classList.remove('show'); el.classList.remove('hiding'); }, 420);
@@ -767,10 +901,7 @@ document.addEventListener('touchend', e => {
 }, {passive:true});
 
 newGame();
-// Only show tutorial on first visit
-if (!localStorage.getItem('purrfect2048_seen_tutorial')) {
-  openTutorial();
-}
+openTutorial();
 
 // Paw watermark background
 (function() {
